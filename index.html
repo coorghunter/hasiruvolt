@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HasiruVolt - Powering Tomorrow Sustainably</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'hv-dark': '#1a3a2a',
+            'hv-green': '#2d8a4e',
+            'hv-light': '#4aba6f',
+            'hv-beige': '#f7f3ed',
+            'hv-cream': '#fdfbf7',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { font-family: 'Poppins', sans-serif; }
+    .font-mont { font-family: 'Montserrat', sans-serif; }
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .hero-bg {
+      background: linear-gradient(135deg, #1a3a2a 0%, #0f2a1c 40%, #1a3a2a 70%, #2d5a3e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(74,186,111,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(45,138,78,0.1) 0%, transparent 50%);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, #f7f3ed, transparent);
+    }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(26,58,42,0.12); }
+    .gradient-text { background: linear-gradient(135deg, #2d8a4e, #4aba6f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-blur { backdrop-filter: blur(12px); background: rgba(26,58,42,0.85); }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .float-anim { animation: float 4s ease-in-out infinite; }
+    .counter { font-variant-numeric: tabular-nums; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto bg-hv-beige"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-2">
+      <img src="logo.png" class="w-11 h-11 object-cover shadow-lg" alt="HasiruVolt Logo"><span class="font-mont font-bold text-xl text-white">HasiruVolt</span>
+     </div>
+     <div class="hidden md:flex items-center gap-8 text-sm text-white/80"><a href="#about" class="hover:text-hv-light transition">About</a> <a href="#solutions" class="hover:text-hv-light transition">Solutions</a> <a href="#vision" class="hover:text-hv-light transition">Vision</a> <a href="#founder" class="hover:text-hv-light transition">Team</a> <a href="#contact" class="px-4 py-2 bg-hv-green rounded-lg hover:bg-hv-light transition text-white font-medium">Contact</a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="hero-bg min-h-[90%] flex items-center relative">
+    <div class="max-w-7xl mx-auto px-6 py-32 md:py-40 relative z-10 w-full">
+     <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-hv-light text-sm mb-8"><i data-lucide="sun" class="w-4 h-4"></i> <span>Karnataka's Clean Energy Future</span>
+      </div>
+      <h1 id="hero-heading" class="font-mont font-800 text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">Powering Tomorrow<br><span class="gradient-text">Sustainably</span></h1>
+      <p id="hero-subheading" class="text-lg md:text-xl text-white/70 max-w-xl mb-10 leading-relaxed">Smart, affordable, and sustainable solar solutions for homes, farms, and businesses.</p><a href="#about" class="inline-flex items-center gap-3 px-8 py-4 bg-hv-green hover:bg-hv-light text-white font-semibold rounded-xl transition-all shadow-lg shadow-hv-green/30 hover:shadow-hv-light/40"> Explore Our Vision <i data-lucide="arrow-down-right" class="w-5 h-5"></i> </a>
+     </div><!-- Decorative solar panel SVG -->
+     <div class="absolute right-10 top-1/2 -translate-y-1/2 hidden lg:block float-anim opacity-20">
+      <svg width="300" height="300" viewbox="0 0 100 100" fill="none"><rect x="10" y="10" width="35" height="35" rx="2" stroke="#4aba6f" stroke-width="1.5" fill="rgba(74,186,111,0.1)" /> <rect x="55" y="10" width="35" height="35" rx="2" stroke="#4aba6f" stroke-width="1.5" fill="rgba(74,186,111,0.1)" /> <rect x="10" y="55" width="35" height="35" rx="2" stroke="#4aba6f" stroke-width="1.5" fill="rgba(74,186,111,0.1)" /> <rect x="55" y="55" width="35" height="35" rx="2" stroke="#4aba6f" stroke-width="1.5" fill="rgba(74,186,111,0.1)" /> <line x1="27" y1="10" x2="27" y2="45" stroke="#4aba6f" stroke-width="0.5" /> <line x1="72" y1="10" x2="72" y2="45" stroke="#4aba6f" stroke-width="0.5" /> <line x1="27" y1="55" x2="27" y2="90" stroke="#4aba6f" stroke-width="0.5" /> <line x1="72" y1="55" x2="72" y2="90" stroke="#4aba6f" stroke-width="0.5" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-24 bg-hv-beige">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="fade-up grid md:grid-cols-2 gap-16 items-center">
+      <div><span class="text-hv-green font-semibold text-sm uppercase tracking-wider">About HasiruVolt</span>
+       <h2 class="font-mont font-bold text-3xl md:text-4xl text-hv-dark mt-3 mb-6">A Renewable Energy<br>
+        Movement</h2>
+       <p class="text-gray-600 leading-relaxed mb-6">HasiruVolt is more than a company — it's a movement helping homes, farms, and businesses across Karnataka transition to affordable, reliable clean energy. We believe energy independence should be accessible to everyone.</p>
+       <div class="grid grid-cols-2 gap-4">
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm">
+         <i data-lucide="home" class="w-5 h-5 text-hv-green"></i><span class="text-sm text-hv-dark font-medium">Rooftop Solar</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm">
+         <i data-lucide="sprout" class="w-5 h-5 text-hv-green"></i><span class="text-sm text-hv-dark font-medium">Farm Solar</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm">
+         <i data-lucide="battery-charging" class="w-5 h-5 text-hv-green"></i><span class="text-sm text-hv-dark font-medium">Hybrid Systems</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm">
+         <i data-lucide="shield" class="w-5 h-5 text-hv-green"></i><span class="text-sm text-hv-dark font-medium">Energy Independence</span>
+        </div>
+       </div>
+      </div>
+      <div class="relative">
+       <div class="aspect-square rounded-3xl bg-gradient-to-br from-hv-dark to-hv-green/80 flex items-center justify-center overflow-hidden">
+        <svg viewbox="0 0 200 200" class="w-3/4 opacity-80"><circle cx="100" cy="80" r="30" fill="none" stroke="#4aba6f" stroke-width="2" /> <line x1="100" y1="50" x2="100" y2="20" stroke="#4aba6f" stroke-width="2" /> <line x1="100" y1="110" x2="100" y2="130" stroke="#4aba6f" stroke-width="2" /> <line x1="70" y1="80" x2="40" y2="80" stroke="#4aba6f" stroke-width="2" /> <line x1="130" y1="80" x2="160" y2="80" stroke="#4aba6f" stroke-width="2" /> <line x1="79" y1="59" x2="60" y2="40" stroke="#4aba6f" stroke-width="2" /> <line x1="121" y1="59" x2="140" y2="40" stroke="#4aba6f" stroke-width="2" /> <line x1="79" y1="101" x2="60" y2="120" stroke="#4aba6f" stroke-width="2" /> <line x1="121" y1="101" x2="140" y2="120" stroke="#4aba6f" stroke-width="2" /> <rect x="50" y="140" width="100" height="40" rx="3" fill="none" stroke="#4aba6f" stroke-width="1.5" /> <line x1="75" y1="140" x2="75" y2="180" stroke="#4aba6f" stroke-width="0.8" /> <line x1="100" y1="140" x2="100" y2="180" stroke="#4aba6f" stroke-width="0.8" /> <line x1="125" y1="140" x2="125" y2="180" stroke="#4aba6f" stroke-width="0.8" /> <line x1="50" y1="160" x2="150" y2="160" stroke="#4aba6f" stroke-width="0.8" />
+        </svg>
+       </div>
+       <div class="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl">
+        <div class="text-2xl font-bold text-hv-dark font-mont">
+         300+
+        </div>
+        <div class="text-xs text-gray-500">
+         Days of Sunshine/yr
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Problems Section -->
+   <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16 fade-up"><span class="text-hv-green font-semibold text-sm uppercase tracking-wider">The Challenge</span>
+      <h2 class="font-mont font-bold text-3xl md:text-4xl text-hv-dark mt-3">Problems We Solve</h2>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up">
+      <div class="card-hover p-6 rounded-2xl bg-gradient-to-b from-red-50 to-white border border-red-100">
+       <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center mb-4">
+        <i data-lucide="trending-up" class="w-6 h-6 text-red-500"></i>
+       </div>
+       <h3 class="font-semibold text-hv-dark mb-2">Rising Electricity Bills</h3>
+       <p class="text-sm text-gray-500">Escalating costs burdening households and small businesses across Karnataka.</p>
+      </div>
+      <div class="card-hover p-6 rounded-2xl bg-gradient-to-b from-orange-50 to-white border border-orange-100">
+       <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-4">
+        <i data-lucide="fuel" class="w-6 h-6 text-orange-500"></i>
+       </div>
+       <h3 class="font-semibold text-hv-dark mb-2">Diesel Pump Dependency</h3>
+       <p class="text-sm text-gray-500">Farmers relying on expensive, polluting diesel for water pumping.</p>
+      </div>
+      <div class="card-hover p-6 rounded-2xl bg-gradient-to-b from-yellow-50 to-white border border-yellow-100">
+       <div class="w-12 h-12 rounded-xl bg-yellow-100 flex items-center justify-center mb-4">
+        <i data-lucide="zap-off" class="w-6 h-6 text-yellow-600"></i>
+       </div>
+       <h3 class="font-semibold text-hv-dark mb-2">Unreliable Rural Power</h3>
+       <p class="text-sm text-gray-500">Frequent outages disrupting livelihoods in rural communities.</p>
+      </div>
+      <div class="card-hover p-6 rounded-2xl bg-gradient-to-b from-purple-50 to-white border border-purple-100">
+       <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center mb-4">
+        <i data-lucide="indian-rupee" class="w-6 h-6 text-purple-500"></i>
+       </div>
+       <h3 class="font-semibold text-hv-dark mb-2">Expensive Power Costs</h3>
+       <p class="text-sm text-gray-500">Commercial enterprises paying premium rates for grid electricity.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Solutions Section -->
+   <section id="solutions" class="py-24 bg-hv-beige">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16 fade-up"><span class="text-hv-green font-semibold text-sm uppercase tracking-wider">What We Offer</span>
+      <h2 class="font-mont font-bold text-3xl md:text-4xl text-hv-dark mt-3">Our Solutions</h2>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-up">
+      <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100">
+       <div class="w-14 h-14 rounded-2xl bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="home" class="w-7 h-7 text-hv-green"></i>
+       </div>
+       <h3 class="font-mont font-semibold text-lg text-hv-dark mb-2">Rooftop Solar</h3>
+       <p class="text-sm text-gray-500">Custom residential and commercial rooftop installations with premium panels.</p>
+      </div>
+      <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100">
+       <div class="w-14 h-14 rounded-2xl bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="droplets" class="w-7 h-7 text-hv-green"></i>
+       </div>
+       <h3 class="font-mont font-semibold text-lg text-hv-dark mb-2">Solar Water Pumps</h3>
+       <p class="text-sm text-gray-500">Replacing diesel pumps with efficient solar-powered irrigation systems.</p>
+      </div>
+      <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100">
+       <div class="w-14 h-14 rounded-2xl bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="battery-charging" class="w-7 h-7 text-hv-green"></i>
+       </div>
+       <h3 class="font-mont font-semibold text-lg text-hv-dark mb-2">Hybrid &amp; Off-Grid</h3>
+       <p class="text-sm text-gray-500">Battery-backed systems ensuring 24/7 power independence.</p>
+      </div>
+      <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100">
+       <div class="w-14 h-14 rounded-2xl bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="clipboard-check" class="w-7 h-7 text-hv-green"></i>
+       </div>
+       <h3 class="font-mont font-semibold text-lg text-hv-dark mb-2">Energy Consultation</h3>
+       <p class="text-sm text-gray-500">Expert assessment and ROI analysis for optimal energy solutions.</p>
+      </div>
+      <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100">
+       <div class="w-14 h-14 rounded-2xl bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="wrench" class="w-7 h-7 text-hv-green"></i>
+       </div>
+       <h3 class="font-mont font-semibold text-lg text-hv-dark mb-2">Installation &amp; Maintenance</h3>
+       <p class="text-sm text-gray-500">End-to-end installation with ongoing monitoring and support.</p>
+      </div>
+      <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100">
+       <div class="w-14 h-14 rounded-2xl bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="shield-check" class="w-7 h-7 text-hv-green"></i>
+       </div>
+       <h3 class="font-mont font-semibold text-lg text-hv-dark mb-2">Warranty &amp; Support</h3>
+       <p class="text-sm text-gray-500">Long-term warranties with dedicated customer support teams.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section class="py-24 bg-hv-dark">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16 fade-up"><span class="text-hv-light font-semibold text-sm uppercase tracking-wider">Our Services</span>
+      <h2 class="font-mont font-bold text-3xl md:text-4xl text-white mt-3">Comprehensive Energy Services</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-6 fade-up">
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"><i data-lucide="sun" class="w-8 h-8 text-hv-light mb-4"></i>
+       <h3 class="font-mont font-semibold text-xl text-white mb-3">Sustainable Energy Solutions</h3>
+       <p class="text-white/60 text-sm leading-relaxed">Complete solar energy systems designed for Karnataka's climate, maximizing efficiency and long-term savings.</p>
+      </div>
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"><i data-lucide="bar-chart-3" class="w-8 h-8 text-hv-light mb-4"></i>
+       <h3 class="font-mont font-semibold text-xl text-white mb-3">Data-Driven Optimization</h3>
+       <p class="text-white/60 text-sm leading-relaxed">Smart monitoring and analytics to ensure peak performance and predictive maintenance for all systems.</p>
+      </div>
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"><i data-lucide="compass" class="w-8 h-8 text-hv-light mb-4"></i>
+       <h3 class="font-mont font-semibold text-xl text-white mb-3">Strategic Clean Energy Development</h3>
+       <p class="text-white/60 text-sm leading-relaxed">Long-term energy planning for communities, housing projects, and commercial developments.</p>
+      </div>
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"><i data-lucide="users" class="w-8 h-8 text-hv-light mb-4"></i>
+       <h3 class="font-mont font-semibold text-xl text-white mb-3">Community Awareness &amp; Green Branding</h3>
+       <p class="text-white/60 text-sm leading-relaxed">Educational workshops, awareness campaigns, and sustainability branding for forward-thinking organizations.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Vision & Mission -->
+   <section id="vision" class="py-24 bg-hv-cream">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16 fade-up"><span class="text-hv-green font-semibold text-sm uppercase tracking-wider">Our Purpose</span>
+      <h2 class="font-mont font-bold text-3xl md:text-4xl text-hv-dark mt-3">Vision &amp; Mission</h2>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up">
+      <div class="card-hover text-center p-8 rounded-2xl bg-white border border-gray-100">
+       <div class="w-16 h-16 mx-auto rounded-full bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="indian-rupee" class="w-8 h-8 text-hv-green"></i>
+       </div>
+       <h3 class="font-semibold text-hv-dark mb-2">Affordable Energy</h3>
+       <p class="text-sm text-gray-500">Making clean energy accessible to every household and business.</p>
+      </div>
+      <div class="card-hover text-center p-8 rounded-2xl bg-white border border-gray-100">
+       <div class="w-16 h-16 mx-auto rounded-full bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="sprout" class="w-8 h-8 text-hv-green"></i>
+       </div>
+       <h3 class="font-semibold text-hv-dark mb-2">Farmer Empowerment</h3>
+       <p class="text-sm text-gray-500">Freeing farmers from diesel dependency and high electricity costs.</p>
+      </div>
+      <div class="card-hover text-center p-8 rounded-2xl bg-white border border-gray-100">
+       <div class="w-16 h-16 mx-auto rounded-full bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="leaf" class="w-8 h-8 text-hv-green"></i>
+       </div>
+       <h3 class="font-semibold text-hv-dark mb-2">Sustainability</h3>
+       <p class="text-sm text-gray-500">Reducing carbon footprint one rooftop at a time.</p>
+      </div>
+      <div class="card-hover text-center p-8 rounded-2xl bg-white border border-gray-100">
+       <div class="w-16 h-16 mx-auto rounded-full bg-hv-green/10 flex items-center justify-center mb-5">
+        <i data-lucide="globe" class="w-8 h-8 text-hv-green"></i>
+       </div>
+       <h3 class="font-semibold text-hv-dark mb-2">India's Energy Transition</h3>
+       <p class="text-sm text-gray-500">Contributing to India's 500 GW renewable energy target by 2030.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Market Opportunity -->
+   <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16 fade-up"><span class="text-hv-green font-semibold text-sm uppercase tracking-wider">Opportunity</span>
+      <h2 class="font-mont font-bold text-3xl md:text-4xl text-hv-dark mt-3">Market Opportunity</h2>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8 fade-up">
+      <div class="text-center p-8 rounded-2xl bg-gradient-to-b from-hv-green/5 to-transparent border border-hv-green/10">
+       <div class="text-4xl font-mont font-bold text-hv-green mb-2 counter">
+        ₹30K Cr+
+       </div>
+       <div class="text-sm text-gray-500 font-medium">
+        Karnataka Solar Market
+       </div>
+       <p class="text-xs text-gray-400 mt-2">Growing at 25%+ CAGR with strong government incentives</p>
+      </div>
+      <div class="text-center p-8 rounded-2xl bg-gradient-to-b from-hv-green/5 to-transparent border border-hv-green/10">
+       <div class="text-4xl font-mont font-bold text-hv-green mb-2 counter">
+        40 GW
+       </div>
+       <div class="text-sm text-gray-500 font-medium">
+        Rooftop Solar Target
+       </div>
+       <p class="text-xs text-gray-400 mt-2">National rooftop solar target with heavy subsidies available</p>
+      </div>
+      <div class="text-center p-8 rounded-2xl bg-gradient-to-b from-hv-green/5 to-transparent border border-hv-green/10">
+       <div class="text-4xl font-mont font-bold text-hv-green mb-2 counter">
+        5 States
+       </div>
+       <div class="text-sm text-gray-500 font-medium">
+        Expansion Vision
+       </div>
+       <p class="text-xs text-gray-400 mt-2">South India expansion planned within 3 years of operations</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Financial Growth -->
+   <section class="py-24 bg-hv-beige">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16 fade-up"><span class="text-hv-green font-semibold text-sm uppercase tracking-wider">Growth</span>
+      <h2 class="font-mont font-bold text-3xl md:text-4xl text-hv-dark mt-3">Financial Projections</h2>
+     </div>
+     <div class="fade-up max-w-4xl mx-auto">
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm">
+       <div class="grid grid-cols-4 gap-4 items-end mb-8" style="height:200px">
+        <div class="flex flex-col items-center justify-end h-full">
+         <div class="w-full bg-gradient-to-t from-hv-green to-hv-light rounded-t-lg" style="height:25%"></div><span class="text-xs text-gray-500 mt-3 font-medium">Year 1</span> <span class="text-sm font-bold text-hv-dark">50+</span>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+         <div class="w-full bg-gradient-to-t from-hv-green to-hv-light rounded-t-lg" style="height:50%"></div><span class="text-xs text-gray-500 mt-3 font-medium">Year 2</span> <span class="text-sm font-bold text-hv-dark">200+</span>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+         <div class="w-full bg-gradient-to-t from-hv-green to-hv-light rounded-t-lg" style="height:75%"></div><span class="text-xs text-gray-500 mt-3 font-medium">Year 3</span> <span class="text-sm font-bold text-hv-dark">500+</span>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+         <div class="w-full bg-gradient-to-t from-hv-green to-hv-light rounded-t-lg" style="height:100%"></div><span class="text-xs text-gray-500 mt-3 font-medium">Year 4</span> <span class="text-sm font-bold text-hv-dark">1000+</span>
+        </div>
+       </div>
+       <p class="text-center text-sm text-gray-500">Projected installations across Karnataka and South India</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Founder Section -->
+   <section id="founder" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="fade-up max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-5 gap-10 items-center">
+       <div class="md:col-span-2 flex justify-center">
+        <div class="w-56 h-56 rounded-3xl bg-gradient-to-br from-hv-dark to-hv-green flex items-center justify-center">
+         <div class="text-center">
+          <div class="w-20 h-20 mx-auto rounded-full bg-white/10 border-2 border-white/30 flex items-center justify-center mb-3"><i data-lucide="user" class="w-10 h-10 text-white/80"></i>
+          </div>
+          <div class="text-white/60 text-xs">
+           Founder &amp; CEO
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="md:col-span-3"><span class="text-hv-green font-semibold text-sm uppercase tracking-wider">Leadership</span>
+        <h2 class="font-mont font-bold text-3xl text-hv-dark mt-2 mb-2">Chaithanya Raj</h2>
+        <p class="text-hv-green font-medium mb-4">Founder &amp; CEO</p>
+        <p class="text-gray-600 leading-relaxed mb-6">Software engineer turned renewable energy entrepreneur, Chaithanya brings a unique blend of technology expertise and sustainability passion. Focused on making solar energy practical and affordable for everyday Indians.</p>
+        <div class="flex gap-3"><span class="px-3 py-1 rounded-full bg-hv-green/10 text-hv-green text-xs font-medium">Software Engineering</span> <span class="px-3 py-1 rounded-full bg-hv-green/10 text-hv-green text-xs font-medium">Renewable Energy</span> <span class="px-3 py-1 rounded-full bg-hv-green/10 text-hv-green text-xs font-medium">Sustainability</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Funding Section -->
+   <section class="py-24 bg-gradient-to-b from-hv-dark to-hv-dark/95">
+    <div class="max-w-7xl mx-auto px-6 text-center fade-up"><span class="text-hv-light font-semibold text-sm uppercase tracking-wider">Investment Opportunity</span>
+     <h2 id="funding-heading" class="font-mont font-bold text-3xl md:text-5xl text-white mt-4 mb-4">Raising ₹1.5 Crore<br>
+      Seed Funding</h2>
+     <p class="text-white/60 max-w-xl mx-auto mb-12">Join us in building Karnataka's most trusted solar energy brand.</p>
+     <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
+      <div class="p-5 rounded-2xl bg-white/5 border border-white/10"><i data-lucide="building" class="w-6 h-6 text-hv-light mx-auto mb-2"></i>
+       <div class="text-white text-xs font-medium">
+        Operations
+       </div>
+      </div>
+      <div class="p-5 rounded-2xl bg-white/5 border border-white/10"><i data-lucide="wrench" class="w-6 h-6 text-hv-light mx-auto mb-2"></i>
+       <div class="text-white text-xs font-medium">
+        Installations
+       </div>
+      </div>
+      <div class="p-5 rounded-2xl bg-white/5 border border-white/10"><i data-lucide="users" class="w-6 h-6 text-hv-light mx-auto mb-2"></i>
+       <div class="text-white text-xs font-medium">
+        Hiring
+       </div>
+      </div>
+      <div class="p-5 rounded-2xl bg-white/5 border border-white/10"><i data-lucide="code" class="w-6 h-6 text-hv-light mx-auto mb-2"></i>
+       <div class="text-white text-xs font-medium">
+        Technology
+       </div>
+      </div>
+      <div class="p-5 rounded-2xl bg-white/5 border border-white/10 col-span-2 md:col-span-1"><i data-lucide="map" class="w-6 h-6 text-hv-light mx-auto mb-2"></i>
+       <div class="text-white text-xs font-medium">
+        Expansion
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-24 bg-hv-beige">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="fade-up max-w-2xl mx-auto text-center"><span class="text-hv-green font-semibold text-sm uppercase tracking-wider">Get In Touch</span>
+      <h2 class="font-mont font-bold text-3xl md:text-4xl text-hv-dark mt-3 mb-10">Let's Build a Cleaner Future</h2>
+      <div class="grid sm:grid-cols-3 gap-6 mb-10">
+       <div class="p-6 rounded-2xl bg-white border border-gray-100"><i data-lucide="globe" class="w-6 h-6 text-hv-green mx-auto mb-3"></i>
+        <div class="text-sm text-gray-500">
+         Website
+        </div>
+        <div class="text-sm font-medium text-hv-dark">
+         hasiruvolt.com
+        </div>
+       </div>
+       <div class="p-6 rounded-2xl bg-white border border-gray-100"><i data-lucide="phone" class="w-6 h-6 text-hv-green mx-auto mb-3"></i>
+        <div class="text-sm text-gray-500">
+         Phone
+        </div>
+        <div class="text-sm font-medium text-hv-dark">
+         +91 9113890925
+        </div>
+       </div>
+       <div class="p-6 rounded-2xl bg-white border border-gray-100"><i data-lucide="map-pin" class="w-6 h-6 text-hv-green mx-auto mb-3"></i>
+        <div class="text-sm text-gray-500">
+         Location
+        </div>
+        <div class="text-sm font-medium text-hv-dark">
+         Bengaluru, Karnataka
+        </div>
+       </div>
+      </div>
+      <div class="flex justify-center gap-4"><a href="#" class="w-10 h-10 rounded-full bg-hv-dark flex items-center justify-center hover:bg-hv-green transition"><i data-lucide="linkedin" class="w-5 h-5 text-white"></i></a> <a href="#" class="w-10 h-10 rounded-full bg-hv-dark flex items-center justify-center hover:bg-hv-green transition"><i data-lucide="twitter" class="w-5 h-5 text-white"></i></a> <a href="#" class="w-10 h-10 rounded-full bg-hv-dark flex items-center justify-center hover:bg-hv-green transition"><i data-lucide="instagram" class="w-5 h-5 text-white"></i></a> <a href="#" class="w-10 h-10 rounded-full bg-hv-dark flex items-center justify-center hover:bg-hv-green transition"><i data-lucide="mail" class="w-5 h-5 text-white"></i></a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-8 bg-hv-dark border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+     <div class="flex items-center gap-2">
+      <img src="logo.png" class="w-8 h-8 object-cover shadow-lg" alt="HasiruVolt Logo"><span class="font-mont font-semibold text-white text-sm">HasiruVolt</span>
+     </div>
+     <p class="text-white/40 text-xs">© 2026 HasiruVolt Energy Pvt Ltd. All rights reserved.</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+  // Initialize Lucide
+  lucide.createIcons();
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Element SDK
+  const defaultConfig = {
+    hero_heading: 'Powering Tomorrow Sustainably',
+    hero_subheading: 'Smart, affordable, and sustainable solar solutions for homes, farms, and businesses.',
+    funding_amount: 'Raising ₹1.5 Crore Seed Funding',
+    background_color: '#f7f3ed',
+    surface_color: '#ffffff',
+    text_color: '#1a3a2a',
+    primary_action_color: '#2d8a4e',
+    secondary_action_color: '#4aba6f',
+    font_family: 'Poppins',
+    font_size: 16
+  };
+
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => {
+      const c = { ...defaultConfig, ...config };
+      document.getElementById('hero-heading').innerHTML = `${c.hero_heading.replace('Sustainably', '<span class="gradient-text">Sustainably</span>')}`;
+      document.getElementById('hero-subheading').textContent = c.hero_subheading;
+      document.getElementById('funding-heading').innerHTML = c.funding_amount.replace('Seed Funding', '<br>Seed Funding');
+
+      // Colors
+      document.getElementById('app-wrapper').style.backgroundColor = c.background_color;
+      document.documentElement.style.setProperty('--text-color', c.text_color);
+
+      // Font
+      document.body.style.fontFamily = `${c.font_family}, Poppins, sans-serif`;
+      document.body.style.fontSize = `${c.font_size}px`;
+    },
+    mapToCapabilities: (config) => {
+      const c = { ...defaultConfig, ...config };
+      return {
+        recolorables: [
+          { get: () => c.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => c.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+          { get: () => c.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => c.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+          { get: () => c.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } },
+        ],
+        borderables: [],
+        fontEditable: { get: () => c.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+        fontSizeable: { get: () => c.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+      };
+    },
+    mapToEditPanelValues: (config) => {
+      const c = { ...defaultConfig, ...config };
+      return new Map([
+        ['hero_heading', c.hero_heading],
+        ['hero_subheading', c.hero_subheading],
+        ['funding_amount', c.funding_amount]
+      ]);
+    }
+  });
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fa2f8be259fb9d7',t:'MTc3ODUyMTI1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
